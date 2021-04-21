@@ -12,8 +12,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
+//import com.bumptech.glide.Glide;
+//import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
 
@@ -38,11 +38,10 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder
     @Override
     public void onBindViewHolder(@NonNull final ListViewHolder holder, int position) {
         final Hero hero = listHero.get(position);
-        Glide.with(holder.itemView.getContext()).load(hero.getPhoto()).apply(new RequestOptions().override(55, 55));
+//        Glide.with(holder.itemView.getContext()).load(hero.getPhoto()).apply(new RequestOptions().override(55, 55));
         holder.tvName.setText(hero.getName());
-        holder.tvDetail.setText(hero.getDetail());
         holder.tvGenre.setText(hero.getGenre());
-        holder.imgPhoto.setImageResource(hero.getPhoto());
+        holder.imgPhoto.setBackgroundResource(hero.getPhoto());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,7 +72,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder
             imgPhoto = itemView.findViewById(R.id.photo);
             tvName = itemView.findViewById(R.id.tvJudul);
             tvGenre = itemView.findViewById(R.id.tvGenre);
-            tvDetail = itemView.findViewById(R.id.tvDescription);
+
         }
     }
 

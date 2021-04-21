@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide;
 public class Detail extends AppCompatActivity {
 
     private TextView tvJudul, tvGenre, tvDescription;
-    private ImageView photo;
+    private ImageView photo, img;
     String judul, genre, description;
     int image;
     @Override
@@ -22,9 +22,10 @@ public class Detail extends AppCompatActivity {
         tvJudul = findViewById(R.id.tvJudul);
 
         tvGenre = findViewById(R.id.tvGenre);
-        tvDescription = findViewById(R.id.tvDescription);
 
-        photo = findViewById(R.id.photo);
+        tvDescription = findViewById(R.id.tvDescription);
+        photo = findViewById(R.id.iv_cover);
+        img = findViewById(R.id.iv_image);
 
         judul = getIntent().getStringExtra("name");
         genre = getIntent().getStringExtra("genre");
@@ -32,6 +33,7 @@ public class Detail extends AppCompatActivity {
 
 
         image = getIntent().getIntExtra("photo", 0);
+        img.setBackgroundResource(image);
         photo.setImageResource(image);
         tvJudul.setText(judul);
         tvGenre.setText(genre);

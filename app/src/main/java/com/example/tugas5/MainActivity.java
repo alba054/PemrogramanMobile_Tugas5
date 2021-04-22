@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView rvHeroes;
-    private ArrayList<Hero> list = new ArrayList<>();
+    private ArrayList<Anime> list = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         rvHeroes = findViewById(R.id.rvHeroes);
         rvHeroes.setHasFixedSize(true);
 
-        list.addAll(HeroesData.getListData());
+        list.addAll(AnimeData.getListData());
         showRecycleList();
 
     }
@@ -32,12 +32,12 @@ public class MainActivity extends AppCompatActivity {
 
         listAdapter.setOnItemClickCallback(new ListAdapter.OnItemClickCallback() {
             @Override
-            public void onItemClicked(Hero data) {
+            public void onItemClicked(Anime data) {
                 showSelectedHero(data);
             }
         });
     }
-    private void showSelectedHero(Hero hero) {
+    private void showSelectedHero(Anime hero) {
         Toast.makeText(this, "Kamu memilih " + hero.getName(), Toast.LENGTH_SHORT).show();
     }
 

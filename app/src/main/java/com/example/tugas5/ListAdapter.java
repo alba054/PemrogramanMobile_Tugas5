@@ -1,13 +1,11 @@
 package com.example.tugas5;
 
-import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,10 +16,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder> {
-    private ArrayList<Hero> listHero;
+    private ArrayList<Anime> listAnime;
 
-    public  ListAdapter(ArrayList<Hero> list){
-        this.listHero = list;
+    public  ListAdapter(ArrayList<Anime> list){
+        this.listAnime = list;
     }
 
     private OnItemClickCallback onItemClickCallback;
@@ -37,21 +35,21 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull final ListViewHolder holder, int position) {
-        final Hero hero = listHero.get(position);
-//        Glide.with(holder.itemView.getContext()).load(hero.getPhoto()).apply(new RequestOptions().override(55, 55));
-        holder.tvName.setText(hero.getName());
-        holder.tvGenre.setText(hero.getGenre());
-        holder.imgPhoto.setBackgroundResource(hero.getPhoto());
+        final Anime anime = listAnime.get(position);
+//        Glide.with(holder.itemView.getContext()).load(anime.getPhoto()).apply(new RequestOptions().override(55, 55));
+        holder.tvName.setText(anime.getName());
+        holder.tvGenre.setText(anime.getGenre());
+        holder.imgPhoto.setBackgroundResource(anime.getPhoto());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                onItemClickCallback.onItemClicked(listHero.get(holder.getAdapterPosition()));
+//                onItemClickCallback.onItemClicked(listAnime.get(holder.getAdapterPosition()));
                 Intent intent = new Intent(holder.itemView.getContext(), Detail.class);
-                intent.putExtra("photo", hero.getPhoto());
-                intent.putExtra("name", hero.getName());
-                intent.putExtra("genre", hero.getGenre());
-                intent.putExtra("detail", hero.getDetail());
+                intent.putExtra("photo", anime.getPhoto());
+                intent.putExtra("name", anime.getName());
+                intent.putExtra("genre", anime.getGenre());
+                intent.putExtra("detail", anime.getDetail());
 
                 holder.itemView.getContext().startActivity(intent);
             }
@@ -61,7 +59,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder
 
     @Override
     public int getItemCount() {
-        return listHero.size();
+        return listAnime.size();
     }
 
     public class ListViewHolder extends RecyclerView.ViewHolder {
@@ -77,6 +75,6 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder
     }
 
     public interface OnItemClickCallback {
-        void onItemClicked(Hero data);
+        void onItemClicked(Anime data);
     }
 }

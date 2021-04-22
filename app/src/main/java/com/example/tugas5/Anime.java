@@ -1,6 +1,6 @@
 package com.example.tugas5;
 
-public class Hero {
+public class Anime {
     public String getName() {
         return name;
     }
